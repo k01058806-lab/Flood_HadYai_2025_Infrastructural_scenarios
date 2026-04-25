@@ -12,7 +12,7 @@
             --primary: #2c3e50;
             --accent: #e74c3c;
             --blue: #3498db;
-            --sidebar-w: 500px;
+            --sidebar-w: 300px;
         }
 
         body { font-family: 'Sarabun', sans-serif; 
@@ -40,7 +40,7 @@
 
         .page-content { display: none; 
                         flex-grow: 1; 
-                        height: calc(100vh - 54px); }
+                        height: calc(90vh - 54px); }
         .page-content.active { display: flex; }
 
         /* Sidebar */
@@ -101,6 +101,14 @@
                      display: flex; 
                      align-items: center; 
                      justify-content: center; }
+
+        .video-container { width: 95%; 
+                           max-width: 800px; 
+                           border-radius: 8px; 
+                           overflow: hidden; 
+                           box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
+        video { width: 100%}
+
     </style>
 </head>
 <body>
@@ -123,10 +131,15 @@
         <h3 style="border-bottom:1px solid #444; padding-bottom:10px;">
             📊 โครงสร้างพื้นฐานเดิมในพื้นที่หาดใหญ่
         </h3>
+        
+        <div class="tab-container">
+            <button class="tab-btn active" onclick="switchTab('video1')">RID hydrograph</button>
+            <button class="tab-btn" onclick="switchTab('video2')">JICA hydrograph</button>
+        </div>
 
         <div class="control-group">
             <span class="label">📌 คำอธิบาย</span>
-            <p style="font-size:1.05rem; line-height:1.5;">
+            <p style="font-size:0.65rem; line-height:1.025;">
                 ลักษณะทางกายภาพของเมืองหาดใหญ่ในปัจจุบันถูกล้อมรอบและตัดผ่านด้วยโครงสร้างพื้นฐานทางคมนาคมขนาดใหญ่ ซึ่งในสภาวะปกติจะทำหน้าที่ส่งเสริมเศรษฐกิจและการเดินทาง แต่ในสภาวะวิกฤตอุทกภัย โครงสร้างเหล่านี้กลับกลายเป็นอุปสรรคสำคัญต่อการระบายน้ำตามธรรมชาติ โครงสร้างหลักที่สำคัญประกอบด้วย
                 •	ถนนสายหลัก: ถนนลพบุรีราเมศวร์ (ทางหลวงหมายเลข 414) และถนนเพชรเกษม (ทางหลวงหมายเลข 4) ซึ่งมีลักษณะเป็นคันทางสูงขวางกั้นทิศทางการไหลของน้ำที่จะระบายออกสู่พื้นที่ลุ่มต่ำ 
                 •	ระบบราง: ทางรถไฟสายกรุงเทพฯ-หาดใหญ่ และทางรถไฟสายหาดใหญ่-สงขลา ซึ่งเป็นคันดินยกระดับที่ขาดช่องเปิดระบายน้ำที่เพียงพอ ทำให้เกิดการสะสมของน้ำทางด้านทิศใต้ของตัวเมือง 
@@ -134,21 +147,36 @@
             </p>
         </div>
         
-        <img src="Fig01.png" alt="คำอธิบายรูปภาพ" width="100%">
-        <p>โครงสร้างพื้นฐานเดิมในพื้นที่หาดใหญ่</p>
+        <img src="Input_Hydrograph.png" alt="คำอธิบายรูปภาพ" width="100%">
+        <p>ปริมาณน้ำท่าที่ X.90 (Inflow)</p>
+        
+        <img src="Fig01.png" alt="คำอธิบายรูปภาพ" width="80%">
+        <p>โครงสร้างพื้นฐานของการจำลอง</p>
     </aside>
 
     <!-- ===== MAIN VIEW ===== -->
     <div class="main-view">
 
         <!-- ===== TAB 1: VIDEO ===== -->
-        <div id="tab-video" class="tab-panel active">
+        <div id="tab-video1" class="tab-panel active">
             <div class="video-container">
                 <video controls autoplay loop muted>
                     <source src="A1.mp4" type="video/mp4">
                 </video>
             </div>
-            <div style="position: absolute; bottom: 10px; color: white; text-align: center;">
+            <div style="position: absolute; bottom: 10px; color: green; text-align: center;">
+                <h3>การจำลองเหตุการณ์น้ำท่วมพื้นที่หาดใหญ่ ปี 2568 &copy; Kwanchai Pakoksung, D.Eng</h3>
+            </div>
+        </div>
+
+        <!-- ===== TAB 1: VIDEO ===== -->
+        <div id="tab-video2" class="tab-panel">
+            <div class="video-container">
+                <video controls autoplay loop muted>
+                    <source src="B1.mp4" type="video/mp4">
+                </video>
+            </div>
+            <div style="position: absolute; bottom: 10px; color: green; text-align: center;">
                 <h3>การจำลองเหตุการณ์น้ำท่วมพื้นที่หาดใหญ่ ปี 2568 &copy; Kwanchai Pakoksung, D.Eng</h3>
             </div>
         </div>
@@ -165,9 +193,14 @@
             📊 โครงสร้างพื้นฐานกรณีปรับปรุงโครงสร้างพื้นฐานเดิมพื้นที่หาดใหญ่
         </h3>
 
+        <div class="tab-container">
+            <button class="tab-btn active" onclick="switchTab('video3')">RID hydrograph</button>
+            <button class="tab-btn" onclick="switchTab('video4')">JICA hydrograph</button>
+        </div>
+
         <div class="control-group">
             <span class="label">📌 คำอธิบาย</span>
-            <p style="font-size:1.05rem; line-height:1.5;">
+            <p style="font-size:0.65rem; line-height:1.025;">
                 แนวทางเบื้องต้นมุ่งเน้นไปที่การแก้ปัญหา "สิ่งกีดขวางทางน้ำ" ที่มีอยู่เดิมเพื่อเพิ่มประสิทธิภาพการไหลเวียนของน้ำในภาพรวม ดังรูปที่ 5 โดยไม่ต้องก่อสร้างระบบใหม่ทั้งหมด ประกอบด้วยมาตรการดังนี้:
                 •	การปรับปรุงถนน: ปรับปรุงถนนลพบุรีราเมศวร์และถนนเพชรเกษม โดยการเพิ่มช่องเปิด ท่อลอด หรือทางน้ำลอด (Culverts/Bridges) ในจุดยุทธศาสตร์เพื่อลดระดับน้ำท่วมขังหน้าทางหลวง 
                 •	การปรับปรุงระบบราง: ปรับปรุงทางรถไฟสายกรุงเทพฯ-หาดใหญ่ ให้มีคุณสมบัติให้น้ำไหลผ่านได้ โดยการเพิ่มช่องเปิด หรือสร้างเป็นสะพาน
@@ -175,22 +208,37 @@
 
             </p>
         </div>
-        
-        <img src="Fig02.png" alt="คำอธิบายรูปภาพ" width="100%">
-        <p>โครงสร้างพื้นฐานกรณีปรับปรุงโครงสร้างพื้นฐานเดิม</p>
+
+        <img src="Input_Hydrograph.png" alt="คำอธิบายรูปภาพ" width="100%">
+        <p>ปริมาณน้ำท่าที่ X.90 (Inflow)</p>
+
+        <img src="Fig02.png" alt="คำอธิบายรูปภาพ" width="80%">
+        <p>โครงสร้างพื้นฐานของการจำลอง</p>
     </aside>
 
     <!-- ===== MAIN VIEW ===== -->
     <div class="main-view">
 
         <!-- ===== TAB 1: VIDEO ===== -->
-        <div id="tab-video" class="tab-panel active">
+        <div id="tab-video3" class="tab-panel active">
             <div class="video-container">
                 <video controls autoplay loop muted>
                     <source src="A2.mp4" type="video/mp4">
                 </video>
             </div>
-            <div style="position: absolute; bottom: 10px; color: white; text-align: center;">
+            <div style="position: absolute; bottom: 10px; color: green; text-align: center;">
+                <h3>การจำลองเหตุการณ์น้ำท่วมพื้นที่หาดใหญ่ ปี 2568 &copy; Kwanchai Pakoksung, D.Eng</h3>
+            </div>
+        </div>
+
+        <!-- ===== TAB 1: VIDEO ===== -->
+        <div id="tab-video4" class="tab-panel">
+            <div class="video-container">
+                <video controls autoplay loop muted>
+                    <source src="B2.mp4" type="video/mp4">
+                </video>
+            </div>
+            <div style="position: absolute; bottom: 10px; color: green; text-align: center;">
                 <h3>การจำลองเหตุการณ์น้ำท่วมพื้นที่หาดใหญ่ ปี 2568 &copy; Kwanchai Pakoksung, D.Eng</h3>
             </div>
         </div>
@@ -207,10 +255,15 @@
             📊 โครงสร้างพื้นฐานกรณีปรับปรุงโครงสร้างพื้นฐานเดิม รวมถึงก่อสร้างเพิ่มเติม พื้นที่หาดใหญ่
         </h3>
 
+        <div class="tab-container">
+            <button class="tab-btn active" onclick="switchTab('video5')"> RID hydrograph</button>
+            <button class="tab-btn" onclick="switchTab('video6')"> JICA htdrograph</button>
+        </div>
+
         <div class="control-group">
             <span class="label">📌 คำอธิบาย</span>
-            <p style="font-size:1.05rem; line-height:1.5;">
-                แนวทางนี้เป็นการผสานมาตรการการเปิดทางน้ำเข้ากับการบริหารจัดการน้ำในลำน้ำ ดังรูปที่ 6 โดยเพิ่มมาตรการทางวิศวกรรมเพื่อควบคุมน้ำในลำน้ำสายย่อยที่มีผลกระทบต่อเขตเมืองสูง ป้องกันไม่ให้น้ำจากคลองหวะล้นตลิ่งเข้าสู่เขตพื้นที่เศรษฐกิจชั้นในและป้องกันมิให้มวลน้ำจากคลองหวะเอ่อล้นเข้าท่วมพื้นที่เขตเศรษฐกิจและบ้านเรือนราษฎรในบริเวณริมน้ำ ขณะเดียวกันยังคงรักษามาตรการการรื้อถอนและปรับปรุงถนนจากกรณีแรกไว้ เพื่อให้มั่นใจว่าหากมีน้ำเล็ดลอดเข้าสู่พื้นที่ชุมชน หรือน้ำที่เกิดจากฝนตกหนักในพื้นที่เอง จะยังมีช่องทางระบายออกสู่ภายนอกได้อย่างรวดเร็วผ่านโครงสร้างถนนและทางรถไฟที่ได้ปรับปรุงไว้แล้ว ประกอบด้วยมาตรการดังนี้:
+            <p style="font-size:0.65rem; line-height:1.025;">
+                แนวทางนี้เป็นการผสานมาตรการการเปิดทางน้ำเข้ากับการบริหารจัดการน้ำในลำน้ำ
                 •	การปรับปรุงถนน: ปรับปรุงถนนลพบุรีราเมศวร์และถนนเพชรเกษม โดยการเพิ่มช่องเปิด ท่อลอด หรือทางน้ำลอด (Culverts/Bridges) ในจุดยุทธศาสตร์เพื่อลดระดับน้ำท่วมขังหน้าทางหลวง 
                 •	การปรับปรุงระบบราง: ปรับปรุงทางรถไฟสายกรุงเทพฯ-หาดใหญ่ ให้มีคุณสมบัติให้น้ำไหลผ่านได้ โดยการเพิ่มช่องเปิด หรือสร้างเป็นสะพาน
                 •	การรื้อถอนโครงสร้างที่เป็นอุปสรรค: รื้อถอนทางรถไฟสายหาดใหญ่-สงขลา (ที่ไม่ได้ใช้งานหรือกีดขวางทางน้ำหลัก) และรื้อถอนคันกั้นน้ำริมคลอง ร.1 บางส่วน ตั้งแต่จุดตัดคลองบางกล่ำไปจนถึงทะเลสาบสงขลา เพื่อเปิดทางให้ระบายน้ำได้รวดเร็วขึ้น
@@ -218,22 +271,37 @@
 
             </p>
         </div>
-        
+
+        <img src="Input_Hydrograph.png" alt="คำอธิบายรูปภาพ" width="100%">
+        <p>ปริมาณน้ำท่าที่ X.90 (Inflow)</p>
+
         <img src="Fig03.png" alt="คำอธิบายรูปภาพ" width="100%">
-        <p>โครงสร้างพื้นฐานกรณีปรับปรุงโครงสร้างพื้นฐานเดิม รวมถึงก่อสร้างเพิ่มเติม </p>
+        <p>โครงสร้างพื้นฐานของการจำลอง</p>
     </aside>
 
     <!-- ===== MAIN VIEW ===== -->
     <div class="main-view">
 
         <!-- ===== TAB 1: VIDEO ===== -->
-        <div id="tab-video" class="tab-panel active">
+        <div id="tab-video5" class="tab-panel active">
             <div class="video-container">
                 <video controls autoplay loop muted>
                     <source src="A3.mp4" type="video/mp4">
                 </video>
             </div>
-            <div style="position: absolute; bottom: 10px; color: white; text-align: center;">
+            <div style="position: absolute; bottom: 10px; color: green; text-align: center;">
+                <h3>การจำลองเหตุการณ์น้ำท่วมพื้นที่หาดใหญ่ ปี 2568 &copy; Kwanchai Pakoksung, D.Eng</h3>
+            </div>
+        </div>
+        
+        <!-- ===== TAB 2: VIDEO ===== -->
+        <div id="tab-video6" class="tab-panel">
+            <div class="video-container">
+                <video controls autoplay loop muted>
+                    <source src="B3.mp4" type="video/mp4">
+                </video>
+            </div>
+            <div style="position: absolute; bottom: 10px; color: green; text-align: center;">
                 <h3>การจำลองเหตุการณ์น้ำท่วมพื้นที่หาดใหญ่ ปี 2568 &copy; Kwanchai Pakoksung, D.Eng</h3>
             </div>
         </div>
@@ -249,36 +317,54 @@
         <h3 style="border-bottom:1px solid #444; padding-bottom:10px;">
             📊 โครงสร้างพื้นฐานกรณีปรับปรุงโครงสร้างพื้นฐานเดิม รวมถึงก่อสร้างเพิ่มเติม พื้นที่หาดใหญ่
         </h3>
+        
+        <div class="tab-container">
+            <button class="tab-btn active" onclick="switchTab('video7')">RID hydrograph</button>
+            <button class="tab-btn" onclick="switchTab('video8')">JICA hydrograph</button>
+        </div>
 
         <div class="control-group">
             <span class="label">📌 คำอธิบาย</span>
-            <p style="font-size:1.05rem; line-height:1.5;">
-                แนวทางนี้ถือเป็นมาตรการการจัดการอุทกภัยแบบบูรณาการที่เข้มข้นที่สุด โดยขยายขอบเขตการป้องกันครอบคลุมลุ่มน้ำย่อยสายหลักทั้งหมดที่มีอิทธิพลต่อเมืองหาดใหญ่ นอกเหนือจากการรื้อถอนสิ่งกีดขวางและการสร้างคันกั้นน้ำริมคลองหวะแล้ว มาตรการนี้ได้เพิ่มการก่อสร้างคันกั้นน้ำป้องกันน้ำท่วมริมคลองอู่ตะเภา ซึ่งเป็นลำน้ำที่มีปริมาณน้ำท่าสูงสุดและมีความเสี่ยงต่อการสร้างความเสียหายเป็นวงกว้าง การเสริมคันกั้นน้ำในจุดยุทธศาสตร์ริมคลองอู่ตะเภาจะช่วยบังคับทิศทางการไหลของน้ำให้มุ่งหน้าไปตามเส้นทางที่กำหนด และลดปริมาณน้ำหลากที่จะไหลบ่าเข้าสู่ตัวเมืองจากทิศตะวันตกและทิศใต้ แนวทางนี้มุ่งเน้นการสร้างแนวปิดล้อมที่สมบูรณ์ให้กับพื้นที่ไข่แดงของเมืองหาดใหญ่ โดยใช้คันกั้นน้ำเป็นกำแพงป้องกันมวลน้ำจากภายนอก และใช้โครงสร้างพื้นฐานที่ปรับปรุงใหม่เป็นช่องทางเร่งระบายน้ำจากภายในออกสู่ภายนอกอย่างเป็นระบบและมีประสิทธิภาพสูงสุด ดังรูปที่ 7 ประกอบด้วยมาตรการดังนี้:
+            <p style="font-size:0.65rem; line-height:1.025;">
+                แนวทางนี้ขยายขอบเขตการป้องกันครอบคลุมลุ่มน้ำย่อยสายหลักทั้งหมดที่มีอิทธิพลต่อเมืองหาดใหญ่
                 •	การปรับปรุงถนน: ปรับปรุงถนนลพบุรีราเมศวร์และถนนเพชรเกษม โดยการเพิ่มช่องเปิด ท่อลอด หรือทางน้ำลอด (Culverts/Bridges) ในจุดยุทธศาสตร์เพื่อลดระดับน้ำท่วมขังหน้าทางหลวง 
                 •	การปรับปรุงระบบราง: ปรับปรุงทางรถไฟสายกรุงเทพฯ-หาดใหญ่ ให้มีคุณสมบัติให้น้ำไหลผ่านได้ โดยการเพิ่มช่องเปิด หรือสร้างเป็นสะพาน
                 •	การรื้อถอนโครงสร้างที่เป็นอุปสรรค: รื้อถอนทางรถไฟสายหาดใหญ่-สงขลา (ที่ไม่ได้ใช้งานหรือกีดขวางทางน้ำหลัก) และรื้อถอนคันกั้นน้ำริมคลอง ร.1 บางส่วน ตั้งแต่จุดตัดคลองบางกล่ำไปจนถึงทะเลสาบสงขลา เพื่อเปิดทางให้ระบายน้ำได้รวดเร็วขึ้น
                 •	คันกั้นน้ำป้องกันน้ำท่วมริมคลองหวะ โดยกำหนดความสูงไว้ที่ 1.5 - 2.0 เมตร (เทียบเท่าระดับ +6.5 เมตร รทก.) 
                 •	คันกั้นน้ำป้องกันน้ำท่วมริมคลองอู่ตะเภา โดยมีความสูง 1.5 - 2.0 เมตร (ระดับ +4.25 ถึง +6.5 เมตร รทก.)
- 
-
             </p>
         </div>
-        
+
+        <img src="Input_Hydrograph.png" alt="คำอธิบายรูปภาพ" width="100%">
+        <p>ปริมาณน้ำท่าที่ X.90 (Inflow)</p>
+
         <img src="Fig04.png" alt="คำอธิบายรูปภาพ" width="100%">
-        <p>โครงสร้างพื้นฐานกรณีปรับปรุงโครงสร้างพื้นฐานเดิม รวมถึงก่อสร้างเพิ่มเติม </p>
+        <p>โครงสร้างพื้นฐานของการจำลอง</p>
     </aside>
 
     <!-- ===== MAIN VIEW ===== -->
     <div class="main-view">
 
         <!-- ===== TAB 1: VIDEO ===== -->
-        <div id="tab-video" class="tab-panel active">
+        <div id="tab-video7" class="tab-panel active">
             <div class="video-container">
                 <video controls autoplay loop muted>
                     <source src="A4.mp4" type="video/mp4">
                 </video>
             </div>
-            <div style="position: absolute; bottom: 10px; color: white; text-align: center;">
+            <div style="position: absolute; bottom: 10px; color: green; text-align: center;">
+                <h3>การจำลองเหตุการณ์น้ำท่วมพื้นที่หาดใหญ่ ปี 2568 &copy; Kwanchai Pakoksung, D.Eng</h3>
+            </div>
+        </div>
+        
+        <!-- ===== TAB 2: VIDEO ===== -->
+        <div id="tab-video8" class="tab-panel">
+            <div class="video-container">
+                <video controls autoplay loop muted>
+                    <source src="B4.mp4" type="video/mp4">
+                </video>
+            </div>
+            <div style="position: absolute; bottom: 10px; color: green; text-align: center;">
                 <h3>การจำลองเหตุการณ์น้ำท่วมพื้นที่หาดใหญ่ ปี 2568 &copy; Kwanchai Pakoksung, D.Eng</h3>
             </div>
         </div>
@@ -295,28 +381,48 @@
             📊 โครงสร้างพื้นฐานกรณีการก่อสร้างเพิ่มเติมกรณียกถนนเพื่อทำพื้นที่หน่วงน้ำ พื้นที่หาดใหญ่
         </h3>
 
+        <div class="tab-container">
+            <button class="tab-btn active" onclick="switchTab('video9')">RID hydrograph</button>
+            <button class="tab-btn" onclick="switchTab('video10')">JICA hydrograph</button>
+        </div>
+
         <div class="control-group">
             <span class="label">📌 คำอธิบาย</span>
-            <p style="font-size:1.05rem; line-height:1.5;">
-                การปรับปรุงทางหลวงองค์การบริหารส่วนจังหวัด 1086 4040 และ4034 ทำการออกแบบทางวิศวกรรมให้คันทางถนนทำหน้าที่เป็นขอบอ่างสำหรับพื้นที่หน่วงน้ำ (Detention Basin) ในช่วงวิกฤต โดยใช้พื้นที่ว่างหรือพื้นที่เกษตรกรรมฝั่งด้านเหนือน้ำของถนนเป็นพื้นที่กักเก็บน้ำชั่วคราว การออกแบบจะรวมถึงการติดตั้งระบบประตูระบายน้ำ (Sluice Gates) และอาคารบังคับน้ำขนาดเล็กตามแนวถนน เพื่อทำหน้าที่ควบคุมอัตราการไหลลัดผ่านถนน (Throughflow Control) ไม่ให้มวลน้ำไหลหลากเข้าสู่ใจกลางเมืองหาดใหญ่เร็วเกินไปในช่วงที่ยอดน้ำท่า (Peak Flow) พื้นที่ที่ถูกกักไว้ด้วยคันถนนจะทำหน้าที่เป็นแก้มลิงชั่วคราวเพื่อรอการระบาย (Temporary Storage) โดยน้ำจะถูกกักเก็บไว้ในช่วงเวลาสั้นๆ (ประมาณ 24-48 ชั่วโมง) จนกว่าระดับน้ำในลำน้ำสายหลักอย่างคลองอู่ตะเภาหรือคลอง ร.1 จะลดระดับลงจนอยู่ในเกณฑ์ที่ปลอดภัย จากนั้นจึงทำการระบายน้ำที่หน่วงไว้ วิธีการนี้จะช่วยลดความลึกของน้ำท่วมในเขตพื้นที่เศรษฐกิจชั้นในลงได้ เนื่องจากสามารถตัดยอดน้ำหลากได้ตั้งแต่พื้นที่ชายขอบเมือง นอกจากนี้ การยกระดับถนนในลักษณะนี้ยังช่วยให้โครงข่ายการคมนาคมขนส่งและการอพยพประชาชนยังคงใช้งานได้แม้ในสภาวะวิกฤตอุทกภัย ถือเป็นการบูรณาการมาตรการเชิงโครงสร้างที่ให้ประโยชน์ทั้งในด้านการป้องกันภัยพิบัติและการพัฒนาเมืองในระยะยาว สอดคล้องกับแนวคิดการออกแบบเมืองที่ยืดหยุ่นต่อภัยพิบัติ (Resilient City) และช่วยลดความสูญเสียทางเศรษฐกิจที่อาจเกิดขึ้นจากน้ำท่วมฉับพลันได้อย่างยั่งยืน
+            <p style="font-size:0.65rem; line-height:1.025;">
+                การปรับปรุงทางหลวงองค์การบริหารส่วนจังหวัด 1086 4040 และ4034 ทำการออกแบบทางวิศวกรรมให้คันทางถนนทำหน้าที่เป็นขอบอ่างสำหรับพื้นที่หน่วงน้ำ (Detention Basin) ในช่วงวิกฤต โดยใช้พื้นที่ว่างหรือพื้นที่เกษตรกรรมฝั่งด้านเหนือน้ำของถนนเป็นพื้นที่กักเก็บน้ำชั่วคราว การออกแบบจะรวมถึงการติดตั้งระบบประตูระบายน้ำ (Sluice Gates) และอาคารบังคับน้ำขนาดเล็กตามแนวถนน เพื่อทำหน้าที่ควบคุมอัตราการไหลลัดผ่านถนน (Throughflow Control) ไม่ให้มวลน้ำไหลหลากเข้าสู่ใจกลางเมืองหาดใหญ่เร็วเกินไปในช่วงที่ยอดน้ำท่า (Peak Flow) พื้นที่ที่ถูกกักไว้ด้วยคันถนนจะทำหน้าที่เป็นแก้มลิงชั่วคราวเพื่อรอการระบาย (Temporary Storage) โดยน้ำจะถูกกักเก็บไว้ในช่วงเวลาสั้นๆ (ประมาณ 24-48 ชั่วโมง) จนกว่าระดับน้ำในลำน้ำสายหลักอย่างคลองอู่ตะเภาหรือคลอง ร.1 จะลดระดับลงจนอยู่ในเกณฑ์ที่ปลอดภัย จากนั้นจึงทำการระบายน้ำที่หน่วงไว้
             </p>
         </div>
-        
+
+        <img src="Input_Hydrograph.png" alt="คำอธิบายรูปภาพ" width="100%">
+        <p>ปริมาณน้ำท่าที่ X.90 (Inflow)</p>
+
         <img src="Fig05.png" alt="คำอธิบายรูปภาพ" width="100%">
-        <p>โครงสร้างพื้นฐานกรณีการก่อสร้างเพิ่มเติมกรณียกถนนเพื่อทำพื้นที่หน่วงน้ำ </p>
+        <p>โครงสร้างพื้นฐานของการจำลอง</p>
     </aside>
 
     <!-- ===== MAIN VIEW ===== -->
     <div class="main-view">
 
         <!-- ===== TAB 1: VIDEO ===== -->
-        <div id="tab-video" class="tab-panel active">
+        <div id="tab-video9" class="tab-panel active">
             <div class="video-container">
                 <video controls autoplay loop muted>
                     <source src="A5.mp4" type="video/mp4">
                 </video>
             </div>
-            <div style="position: absolute; bottom: 10px; color: white; text-align: center;">
+            <div style="position: absolute; bottom: 10px; color: green; text-align: center;">
+                <h3>การจำลองเหตุการณ์น้ำท่วมพื้นที่หาดใหญ่ ปี 2568 &copy; Kwanchai Pakoksung, D.Eng</h3>
+            </div>
+        </div>
+        
+        <!-- ===== TAB 2: VIDEO ===== -->
+        <div id="tab-video10" class="tab-panel">
+            <div class="video-container">
+                <video controls autoplay loop muted>
+                    <source src="B5.mp4" type="video/mp4">
+                </video>
+            </div>
+            <div style="position: absolute; bottom: 10px; color: green; text-align: center;">
                 <h3>การจำลองเหตุการณ์น้ำท่วมพื้นที่หาดใหญ่ ปี 2568 &copy; Kwanchai Pakoksung, D.Eng</h3>
             </div>
         </div>
@@ -333,28 +439,48 @@
             📊 โครงสร้างพื้นฐานกรณีการก่อสร้างเพิ่มเติมกรณียกถนนเพื่อทำพื้นที่หน่วงน้ำและเพิ่มคลอง ร.1 สายใหม่ พื้นที่หาดใหญ่
         </h3>
 
+        <div class="tab-container">
+            <button class="tab-btn active" onclick="switchTab('video11')">RID hydrograph</button>
+            <button class="tab-btn" onclick="switchTab('video12')">JICA hydrograph</button>
+        </div>
+
         <div class="control-group">
             <span class="label">📌 คำอธิบาย</span>
-            <p style="font-size:1.05rem; line-height:1.5;">
-                การรวมการกักเก็บน้ำเชิงพื้นที่ (Area-based Retention) จากการปรับปรุงทางหลวงองค์การบริหารส่วนจังหวัด 1086 4040 และ4034 เข้ากับโครงสร้างระบบระบายน้ำตามข้อเสนอแนะของ JICA โดยการใช้ทางหลวงที่ถูกยกระดับเป็นคันบังคับน้ำเพื่อสร้างพื้นที่หน่วงน้ำ (Detention Basin) ฝั่งทิศตะวันตกของเมือง ทำหน้าที่เป็นด่านหน้าในการตัดยอดน้ำหลาก (Peak Cut) จากพื้นที่ตอนบน มวลน้ำส่วนเกินที่ถูกกักไว้จะไม่ได้เพียงแค่รอการระบายลงสู่ลำน้ำเดิมเท่านั้น แต่จะถูกเชื่อมโยงเข้ากับระบบคลองผันน้ำสายใหม่ (คลอง ร.1 สายใหม่) ที่มีขนาดหน้าตัดและประสิทธิภาพเทียบเท่าคลอง ร.1 เดิม ซึ่งแนวทางนี้จะช่วยเพิ่มศักยภาพการระบายน้ำจากเดิมที่รองรับได้เพียง 1,200-1,400 ลบ.ม./วินาที ให้สามารถรองรับปริมาณน้ำท่าสูงสุดได้ถึง 5,500 ลบ.ม./วินาที สอดคล้องกับเป้าหมายการป้องกันภัยระดับรอบปีการเกิดซ้ำ 75 ปี (75-year Return Period) ภายใต้สภาวะการเปลี่ยนแปลงสภาพภูมิอากาศ
+            <p style="font-size:0.65rem; line-height:1.025;">
+                การปรับปรุงทางหลวงองค์การบริหารส่วนจังหวัด 1086 4040 และ4034 เข้ากับโครงสร้างระบบระบายน้ำตามข้อเสนอแนะของ JICA โดยการใช้ทางหลวงที่ถูกยกระดับเป็นคันบังคับน้ำเพื่อสร้างพื้นที่หน่วงน้ำ (Detention Basin) ฝั่งทิศตะวันตกของเมือง ทำหน้าที่เป็นด่านหน้าในการตัดยอดน้ำหลาก (Peak Cut) จากพื้นที่ตอนบน มวลน้ำส่วนเกินที่ถูกกักไว้จะไม่ได้เพียงแค่รอการระบายลงสู่ลำน้ำเดิมเท่านั้น แต่จะถูกเชื่อมโยงเข้ากับระบบคลองผันน้ำสายใหม่ (คลอง ร.1 สายใหม่) ที่มีขนาดหน้าตัดและประสิทธิภาพเทียบเท่าคลอง ร.1 เดิม ซึ่งแนวทางนี้จะช่วยเพิ่มศักยภาพการระบายน้ำจากเดิมที่รองรับได้เพียง 1,200-1,400 ลบ.ม./วินาที
             </p>
         </div>
-        
+
+        <img src="Input_Hydrograph.png" alt="คำอธิบายรูปภาพ" width="100%">
+        <p>ปริมาณน้ำท่าที่ X.90 (Inflow)</p>
+
         <img src="Fig06.png" alt="คำอธิบายรูปภาพ" width="100%">
-        <p>โครงสร้างพื้นฐานกรณีการก่อสร้างเพิ่มเติมกรณียกถนนเพื่อทำพื้นที่หน่วงน้ำและเพิ่มคลอง ร.1 สายใหม่ </p>
+        <p>โครงสร้างพื้นฐานของการจำลอง</p>
     </aside>
 
     <!-- ===== MAIN VIEW ===== -->
     <div class="main-view">
 
         <!-- ===== TAB 1: VIDEO ===== -->
-        <div id="tab-video" class="tab-panel active">
+        <div id="tab-video11" class="tab-panel active">
             <div class="video-container">
                 <video controls autoplay loop muted>
                     <source src="A6.mp4" type="video/mp4">
                 </video>
             </div>
-            <div style="position: absolute; bottom: 10px; color: white; text-align: center;">
+            <div style="position: absolute; bottom: 10px; color: green; text-align: center;">
+                <h3>การจำลองเหตุการณ์น้ำท่วมพื้นที่หาดใหญ่ ปี 2568 &copy; Kwanchai Pakoksung, D.Eng</h3>
+            </div>
+        </div>
+
+        <!-- ===== TAB 2: VIDEO ===== -->
+        <div id="tab-video12" class="tab-panel">
+            <div class="video-container">
+                <video controls autoplay loop muted>
+                    <source src="B6.mp4" type="video/mp4">
+                </video>
+            </div>
+            <div style="position: absolute; bottom: 10px; color: green; text-align: center;">
                 <h3>การจำลองเหตุการณ์น้ำท่วมพื้นที่หาดใหญ่ ปี 2568 &copy; Kwanchai Pakoksung, D.Eng</h3>
             </div>
         </div>
@@ -362,7 +488,6 @@
     </div>
 
 </section>
-
 
 <section id="page7" class="page-content">
 
@@ -372,28 +497,48 @@
             📊 โครงสร้างพื้นฐานกรณีการก่อสร้างเพิ่มเติมกรณียกถนนเพื่อทำพื้นที่หน่วงน้ำ เพิ่มคลอง ร.1 สายใหม่ และคลองระบายน้ำลงสู่ทะเลอ่าวไทย พื้นที่หาดใหญ่
         </h3>
 
+        <div class="tab-container">
+            <button class="tab-btn active" onclick="switchTab('video13')">RID hydrograph</button>
+            <button class="tab-btn" onclick="switchTab('video14')">JICA hydrograph</button>
+        </div>
+
         <div class="control-group">
             <span class="label">📌 คำอธิบาย</span>
-            <p style="font-size:1.05rem; line-height:1.5;">
-                การใช้การยกระดับถนนเป็นพื้นที่หน่วงน้ำร่วมกับคลองผันน้ำสายใหม่ตามแนวทาง JICA เข้ากับ ระบบทางระบายน้ำสายตรงลงสู่อ่าวไทย มุ่งเน้นการแยกส่วนมวลน้ำออกเป็นสามทางหลัก คือ การกักชะลอน้ำที่พื้นที่หน่วงน้ำตอนบน การผันน้ำผ่านโครงข่ายคลองระบายน้ำ ร.1 และคลองขนานสายใหม่ และการระบายน้ำจากคลองสายย่อยทางตะวันออกผ่านคลองระบายน้ำสายตรงลงสู่ทะเลโดยไม่ผ่านจุดคอขวดบริเวณรอยต่อทะเลสาบสงขลา  การจัดการในลักษณะนี้ช่วยลดความซับซ้อนของการไหลและกำจัดปัญหาการสะสมของมวลน้ำในเขตเมืองได้ สิ่งสำคัญของกรณีนี้ คือการสร้างทางออกอิสระให้กับมวลน้ำจากคลอง ร.3 ร.8 และมวลน้ำบริเวณถนนกาญจนวานิช ผ่านคลองผันน้ำสายตรงลงสู่อ่าวไทย ซึ่งช่วยลดความเสี่ยงจากระดับน้ำหนุนในทะเลสาบสงขลา ที่มักจะเป็นอุปสรรคสำคัญในการระบายน้ำของคลองระบายน้ำ ร.1 ในสภาวะปกติ การมีทางระบายน้ำที่แยกจากกันอย่างชัดเจนช่วยให้อัตราการไหลรวมของระบบเพิ่มขึ้นเกินกว่า 5,500 ลูกบาศก์เมตรต่อวินาที รองรับปริมาณฝนสะสมที่รุนแรงในระดับเดียวกับปี 2568 ได้โดยไม่เกิดน้ำท่วมขังในเขตเศรษฐกิจน
+            <p style="font-size:0.65rem; line-height:1.025;">
+                การกักชะลอน้ำที่พื้นที่หน่วงน้ำตอนบน การผันน้ำผ่านโครงข่ายคลองระบายน้ำ ร.1 และคลองขนานสายใหม่ และการระบายน้ำจากคลองสายย่อยทางตะวันออกผ่านคลองระบายน้ำสายตรงลงสู่ทะเลโดยไม่ผ่านจุดคอขวดบริเวณรอยต่อทะเลสาบสงขลา  
             </p>
         </div>
-        
+
+        <img src="Input_Hydrograph.png" alt="คำอธิบายรูปภาพ" width="100%">
+        <p>ปริมาณน้ำท่าที่ X.90 (Inflow)</p>
+
         <img src="Fig07.png" alt="คำอธิบายรูปภาพ" width="100%">
-        <p>โครงสร้างพื้นฐานกรณีการก่อสร้างเพิ่มเติมกรณียกถนนเพื่อทำพื้นที่หน่วงน้ำ เพิ่มคลอง ร.1 สายใหม่ และคลองระบายน้ำลงสู่ทะเลอ่าวไทย </p>
+        <p>โครงสร้างพื้นฐานของการจำลอง</p>
     </aside>
 
     <!-- ===== MAIN VIEW ===== -->
     <div class="main-view">
 
         <!-- ===== TAB 1: VIDEO ===== -->
-        <div id="tab-video" class="tab-panel active">
+        <div id="tab-video13" class="tab-panel active">
             <div class="video-container">
                 <video controls autoplay loop muted>
                     <source src="A7.mp4" type="video/mp4">
                 </video>
             </div>
-            <div style="position: absolute; bottom: 10px; color: white; text-align: center;">
+            <div style="position: absolute; bottom: 10px; color: green; text-align: center;">
+                <h3>การจำลองเหตุการณ์น้ำท่วมพื้นที่หาดใหญ่ ปี 2568 &copy; Kwanchai Pakoksung, D.Eng</h3>
+            </div>
+        </div>
+
+        <!-- ===== TAB 2: VIDEO ===== -->
+        <div id="tab-video14" class="tab-panel">
+            <div class="video-container">
+                <video controls autoplay loop muted>
+                    <source src="B7.mp4" type="video/mp4">
+                </video>
+            </div>
+            <div style="position: absolute; bottom: 10px; color: green; text-align: center;">
                 <h3>การจำลองเหตุการณ์น้ำท่วมพื้นที่หาดใหญ่ ปี 2568 &copy; Kwanchai Pakoksung, D.Eng</h3>
             </div>
         </div>
@@ -410,28 +555,48 @@
             📊 โครงสร้างพื้นฐานกรณีการก่อสร้างเพิ่มเติมกรณียกถนนเพื่อทำพื้นที่หน่วงน้ำ เพิ่มคลอง ร.1 สายใหม่ คลองระบายน้ำลงสู่ทะเลอ่าวไทย และพื้นที่ซับน้ำพื้นที่หาดใหญ่
         </h3>
 
+        <div class="tab-container">
+            <button class="tab-btn active" onclick="switchTab('video15')">RID hydrograph</button>
+            <button class="tab-btn" onclick="switchTab('video16')">JICA hydrograph</button>
+        </div>
+
         <div class="control-group">
             <span class="label">📌 คำอธิบาย</span>
-            <p style="font-size:1.05rem; line-height:1.5;">
-                การรวมการยกระดับถนนเป็นคันกั้นน้ำ การก่อสร้างคลองผันน้ำสายใหม่ขนานคลอง ร.1 และการสร้างทางระบายน้ำสายตรงลงสู่อ่าวไทย มาผนวกเข้ากับแนวคิดพื้นที่ซับน้ำ (Sponge Area) หรือมาตรการแก้ปัญหาโดยอาศัยธรรมชาติ (Nature-based Solutions: NbS) โดยเน้นการเปลี่ยนพื้นที่สาธารณะ พื้นที่ว่างเปล่า และพื้นที่สีเขียวในเขตเมืองและชายขอบเมือง ให้ทำหน้าที่เป็นฟองน้ำรองรับน้ำหลาก (Blue-Green Infrastructure) มาตรการนี้ช่วยลดภาระของระบบระบายน้ำหลักในช่วงที่เกิดฝนตกหนักเกินขีดจำกัดการออกแบบ โดยการตัดยอดน้ำท่าจากแหล่งกำเนิดก่อนที่จะไหลลงสู่คลองระบายน้ำ สิ่งสำคัญของกรณีนี้คือการสร้างระบบระบายน้ำที่มีความยืดหยุ่นโดยพื้นที่ซับน้ำจะทำหน้าที่ชะลอเวลาการรวมตัวของน้ำ (Time of Concentration) และลดปริมาณน้ำท่ารวม ผ่านการกักเก็บและซึมลงสู่ใต้ดิน ซึ่งเมื่อทำงานร่วมกับระบบคลองผันน้ำประสิทธิภาพสูงที่ระบายน้ำลงสู่ทั้งทะเลสาบสงขลาและอ่าวไทยโดยตรง นอกจากนี้ มาตรการดังกล่าวยังให้ผลประโยชน์ร่วม (Co-benefits) ในแง่ของการเพิ่มพื้นที่สันทนาการ การปรับปรุงคุณภาพน้ำ และการลดอุณหภูมิของเมือง (Urban Heat Island)
+            <p style="font-size:0.65rem; line-height:1.025;">
+                การรวมการยกระดับถนนเป็นคันกั้นน้ำ การก่อสร้างคลองผันน้ำสายใหม่ขนานคลอง ร.1 และการสร้างทางระบายน้ำสายตรงลงสู่อ่าวไทย มาผนวกเข้ากับแนวคิดพื้นที่ซับน้ำ (Sponge Area) หรือมาตรการแก้ปัญหาโดยอาศัยธรรมชาติ (Nature-based Solutions: NbS) โดยเน้นการเปลี่ยนพื้นที่สาธารณะ พื้นที่ว่างเปล่า และพื้นที่สีเขียวในเขตเมืองและชายขอบเมือง ให้ทำหน้าที่เป็นฟองน้ำรองรับน้ำหลาก (Blue-Green Infrastructure)
             </p>
         </div>
-        
+
+        <img src="Input_Hydrograph.png" alt="คำอธิบายรูปภาพ" width="100%">
+        <p>ปริมาณน้ำท่าที่ X.90 (Inflow)</p>
+
         <img src="Fig08.png" alt="คำอธิบายรูปภาพ" width="100%">
-        <p>โครงสร้างพื้นฐานกรณีการก่อสร้างเพิ่มเติมกรณียกถนนเพื่อทำพื้นที่หน่วงน้ำ เพิ่มคลอง ร.1 สายใหม่ คลองระบายน้ำลงสู่ทะเลอ่าวไทย และพื้นที่ซับน้ำ</p>
+        <p>โครงสร้างพื้นฐานของการจำลอง</p>
     </aside>
 
     <!-- ===== MAIN VIEW ===== -->
     <div class="main-view">
 
         <!-- ===== TAB 1: VIDEO ===== -->
-        <div id="tab-video" class="tab-panel active">
+        <div id="tab-video15" class="tab-panel active">
             <div class="video-container">
                 <video controls autoplay loop muted>
                     <source src="A8.mp4" type="video/mp4">
                 </video>
             </div>
-            <div style="position: absolute; bottom: 10px; color: white; text-align: center;">
+            <div style="position: absolute; bottom: 10px; color: green; text-align: center;">
+                <h3>การจำลองเหตุการณ์น้ำท่วมพื้นที่หาดใหญ่ ปี 2568 &copy; Kwanchai Pakoksung, D.Eng</h3>
+            </div>
+        </div>
+
+        <!-- ===== TAB 2: VIDEO ===== -->
+        <div id="tab-video16" class="tab-panel">
+            <div class="video-container">
+                <video controls autoplay loop muted>
+                    <source src="B8.mp4" type="video/mp4">
+                </video>
+            </div>
+            <div style="position: absolute; bottom: 10px; color: green; text-align: center;">
                 <h3>การจำลองเหตุการณ์น้ำท่วมพื้นที่หาดใหญ่ ปี 2568 &copy; Kwanchai Pakoksung, D.Eng</h3>
             </div>
         </div>
@@ -442,11 +607,22 @@
 
 <script>
     function showPage(pageId) {
-             document.querySelectorAll('.page-content').forEach(p => p.classList.remove('active'));
-             document.querySelectorAll('.nav-link').forEach(n => n.classList.remove('active'));
-             document.getElementById(pageId).classList.add('active');
-             event.currentTarget.classList.add('active');
+                 document.querySelectorAll('.page-content').forEach(p => p.classList.remove('active'));
+                 document.querySelectorAll('.nav-link').forEach(n => n.classList.remove('active'));
+                 document.getElementById(pageId).classList.add('active');
+                 event.currentTarget.classList.add('active');
                               }
+    function switchTab(tab) {
+                document.querySelectorAll('.tab-btn')
+                    .forEach(b => b.classList.remove('active'));
+
+                document.querySelectorAll('.tab-panel')
+                    .forEach(p => p.classList.remove('active'));
+
+                event.currentTarget.classList.add('active');
+                document.getElementById('tab-' + tab).classList.add('active');
+                                
+                                }
 </script>
 </body>
 </html>
